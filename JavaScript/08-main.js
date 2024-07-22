@@ -1,6 +1,3 @@
-// 13-main.js
-//
-//
 
 function draw1() {
 	svg = d3.select("body")
@@ -90,15 +87,7 @@ function main() {
 				  .html("<font size=\"15\">Thank you very much for participating!</font>");
 			var dFinished = new Date();
 			questionsAsked.push(dFinished.getTime());
-			/*d3.select("body")
-				 .append("p")
-				 .attr("id", "results1")
-				 .html(document.title+": </br>{startTime: "+questionsAsked[0]+","+
-				  "</br>onLoad: ["+questionsAsked[1]+"],"+
-				  "</br>onClick: ["+questionsAsked[2]+"],"+
-				  "</br>correct: ["+questionsAsked[3]+"],"+
-				  "</br>answerClicked: ["+questionsAsked[4]+"],"+
-				  "</br>endTime: "+questionsAsked[5]+"}");*/
+			
 			dataToSubmit = {"version" : versionNumber(), "startTime" : questionsAsked[0],
 			"onLoad" : [questionsAsked[1]],
 			"onClick" : [questionsAsked[2]],
@@ -134,15 +123,6 @@ function main() {
 			// 'canvas'
 			draw1();
 	
-			/*d3.select("body")
-				  .append("p")
-				  .attr("id", "myQuestions")
-				  .text("Questions asked: " + questionsAsked[1].length
-						+" out of " + maxDifficulty
-						+" ——— Correct answers: " + correctAnswers);*/
-			//$.cookie("asked", parseInt($.cookie("asked"))+1, { path: '/' });
-		
-		
 			pat = new choosePattern();
 		
 			//console.log("Radii: "+ radii);
@@ -164,44 +144,7 @@ function main() {
 			questionsAsked[1].push(dGenerated.getTime());
 		}
 		difficulty++;
-	
-			// For DEBUGGING & TESTING
-			/*d3.select("body")
-				  .append("p")
-				  .attr("id", "skipText")
-				  .html("<font size=\"2\">Question: "+difficulty);*/
-	}
+		}
 	
 	testItem();
-	
-	// The following is for running each participant through multiple different shorter tests
-	//  Also see lines 80 and 77 (as of internal version 0.8.7), see comments below
-	//	[difficulty = 0]
-	// 	[difficulty = questionsAsked[1].length;]
-	/*if (difficulty == 0) {
-		var MOText = "";
-		switch (mouseOrder[currentSet]) {
-			case 0:
-				MOText = "<b>active</b> and the options are otherwise <b>visible</b>";
-				break;
-			case 1:
-				MOText = "<b>deactive</b> and the options are <b>visible</b>";
-				break;
-			case 2:
-				MOText = "<b>active</b> and the options are otherwise <b>hidden</b>";
-				break;
-			default:
-				console.error("Unknown mouseOrder");
-		}
-		d3.select("body")
-				  .append("p")
-				  .attr("id", "newSet")
-				  .html("<font size=\"5\"><br/><br/><br/><center>Beginning set "+(currentSet+1)+"<br/>The Mouse-over functionality is "+MOText+"<center></font>");
-			
-		setTimeout(function() {
-			d3.select("#newSet").remove();
-			testItem();}, 3000)
-	} else {
-		testItem();
-	}*/
 }
