@@ -83,12 +83,19 @@ function main() {
 				.attr("id", "thanks")
 				.html("<font size=\"15\">Thank you very much for participating!</font>");
 
-			// Add random percentage score
-			var resultScore = Math.floor(Math.random() * 101); // Generate result between 0 and 100
+			// Calculate the actual score percentage
+			var totalQuestions = questionsAsked[3].length;
+			var correctAnswers = 0;
+			for (var i = 0; i < totalQuestions; i++) {
+				correctAnswers += questionsAsked[3][i];
+			}
+			var scorePercentage = (correctAnswers / totalQuestions) * 100;
+
+			// Display the score percentage
 			d3.select("body")
 				.append("p")
 				.attr("id", "score")
-				.html("<font size=\"15\">Your score is: " + resultScore + "%</font>");
+				.html("<font size=\"15\">Your score is: " + scorePercentage.toFixed() + "%</font>");
 
 			var dFinished = new Date();
 			questionsAsked.push(dFinished.getTime());
