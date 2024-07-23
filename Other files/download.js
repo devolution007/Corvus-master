@@ -3,6 +3,7 @@
 // --------------------------------------------------------------------------------- 
 //	0.6.4   20150206    JG      IT       
 /* ************ © Copyright 2019 Isaac Thimbleby ******** */
+
 function download(strData, strFileName, strMimeType) {
     var D = document,
         A = arguments,
